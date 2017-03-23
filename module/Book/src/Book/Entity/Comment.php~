@@ -1,0 +1,131 @@
+<?php
+
+namespace Book\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comment
+ *
+ * @ORM\Table(name="comment", indexes={@ORM\Index(name="FK__article", columns={"article"})})
+ * @ORM\Entity
+ */
+class Comment
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_emal", type="string", length=50, nullable=false)
+     */
+    private $userEmal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="text", length=65535, nullable=false)
+     */
+    private $comment;
+
+    /**
+     * @var \Book\Entity\Article
+     *
+     * @ORM\ManyToOne(targetEntity="Book\Entity\Article")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="article", referencedColumnName="id")
+     * })
+     */
+    private $article;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set userEmal
+     *
+     * @param string $userEmal
+     *
+     * @return Comment
+     */
+    public function setUserEmal($userEmal)
+    {
+        $this->userEmal = $userEmal;
+
+        return $this;
+    }
+
+    /**
+     * Get userEmal
+     *
+     * @return string
+     */
+    public function getUserEmal()
+    {
+        return $this->userEmal;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return Comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set article
+     *
+     * @param \Book\Entity\Article $article
+     *
+     * @return Comment
+     */
+    public function setArticle(\Book\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \Book\Entity\Article
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+}

@@ -1,0 +1,47 @@
+<?php
+
+namespace Book\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Contact
+ *
+ * @ORM\Table(name="contact")
+ * @ORM\Entity
+ */
+class Contact
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=50, nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="father_name", type="string", length=50, nullable=true)
+     */
+    private $fatherName;
+
+
+}
+

@@ -1,0 +1,43 @@
+<?php
+
+namespace Book\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Phone
+ *
+ * @ORM\Table(name="phone", uniqueConstraints={@ORM\UniqueConstraint(name="phone", columns={"phone"})}, indexes={@ORM\Index(name="FK__contact", columns={"contact"})})
+ * @ORM\Entity
+ */
+class Phone
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=20, nullable=false)
+     */
+    private $phone;
+
+    /**
+     * @var \Book\Entity\Contact
+     *
+     * @ORM\ManyToOne(targetEntity="Book\Entity\Contact")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="contact", referencedColumnName="id")
+     * })
+     */
+    private $contact;
+
+
+}
+
